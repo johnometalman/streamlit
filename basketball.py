@@ -23,10 +23,10 @@ def load_data(year):
     data = pd.read_html(url, header = 0)
     df = data[0]
     delete_raw = df.drop(df[df.Age == 'Age'].index) # Deletes repeating headers in content
-    delete_raw = delete_raw.fillna(0)
-    df.drop('FG%', inplace=True, axis=1)
-    playerstats = delete_raw.drop(['Rk'], axis=1)
-    return playerstats
+    delete_raw = delete_raw.fillna('0.0')
+    data_clean = delete_raw.drop(['Rk'], axis=1)
+    return data_clean
+
 playerstats = load_data(selected_year)
 
 # Sidebar - Team selection
@@ -52,7 +52,7 @@ def file_download(df):
     href = f'<a href="data:file/csv;base64,{b64}" download="playerstats.csv">Download CSV File</a>'
     return href
 
-st.markdown(filedownload(df_selected_team), unsafe_allow_html=True)
+st.markdown(file_download(df_selected_team), unsafe_allow_html=True)
 
 # Heatmap
 if st.button('Intercorrelation Heatmap'):
