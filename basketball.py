@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 st.title('NBA Player Stats Explorer')
 
 st.markdown("""
