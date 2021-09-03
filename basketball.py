@@ -24,6 +24,7 @@ def load_data(year):
     df = data[0]
     delete_raw = df.drop(df[df.Age == 'Age'].index) # Deletes repeating headers in content
     delete_raw = delete_raw.fillna(0)
+    df.drop('FG%', inplace=True, axis=1)
     playerstats = delete_raw.drop(['Rk'], axis=1)
     return playerstats
 playerstats = load_data(selected_year)
