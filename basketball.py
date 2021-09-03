@@ -5,26 +5,26 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-st.title('Estadisticas de Jugadores de la NBA')
+st.title('NBA Player Stats Explorer')
 
 st.markdown("""
-Esta aplicación hace un simple webscraping de la página de estadisticas de la NBA
-* **Librerías usadas:** base64, pandas, streamlit
-* **Fuente:** [Basketball-reference.com](https://www.basketball-reference.com/).
+This app performs simple webscraping of NBA player stats data!
+* **Python libraries:** base64, pandas, streamlit
+* **Data source:** [Basketball-reference.com](https://www.basketball-reference.com/).
 """)
 
 st.sidebar.header('User Input Features')
-selected_year = st.sidebar.selectbox('Year', list(reversed(range(1950,2020))))
+selected_year = st.sidebar.selectbox('Year', list(reversed(range(1950,2022))))
 
 # Web scraping of NBA player stats
 @st.cache
 def load_data(year):
     url = "https://www.basketball-reference.com/leagues/NBA_" + str(year) + "_per_game.html"
-    html = pd.read_html(url, header = 0)
-    df = html[0]
-    raw = df.drop(df[df.Age == 'Age'].index) # Deletes repeating headers in content
-    raw = raw.fillna(0)
-    playerstats = raw.drop(['Rk'], axis=1)
+    data = pd.read_html(url, header = 0)
+    df = data[0]
+    delete_raw = df.drop(df[df.Age == 'Age'].index) # Deletes repeating headers in content
+    delete_raw = delete_raw.fillna(0)
+    playerstats = delete_raw.drop(['Rk'], axis=1)
     return playerstats
 playerstats = load_data(selected_year)
 
@@ -45,7 +45,7 @@ st.dataframe(df_selected_team)
 
 # Download NBA player stats data
 # https://discuss.streamlit.io/t/how-to-download-file-in-streamlit/1806
-def filedownload(df):
+def file_download(df):
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
     href = f'<a href="data:file/csv;base64,{b64}" download="playerstats.csv">Download CSV File</a>'
