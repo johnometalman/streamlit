@@ -7,16 +7,16 @@ import numpy as np
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-st.title('NBA Player Stats Explorer')
+st.title('Explorador estadístico de jugadores de la NBA')
 
 st.markdown("""
-This app performs simple webscraping of NBA player stats data!
-* **Python libraries:** base64, pandas, streamlit
-* **Data source:** [Basketball-reference.com](https://www.basketball-reference.com/).
+Esta aplicación realiza un webscraping simple de los datos de los jugadores de la NBA!
+* **Librerías de Python:** base64, pandas, streamlit
+* **Fuente:** [Basketball-reference.com](https://www.basketball-reference.com/).
 """)
 
-st.sidebar.header('User Input Features')
-selected_year = st.sidebar.selectbox('Year', list(reversed(range(1950,2022))))
+st.sidebar.header('Ingreso de Variables')
+selected_year = st.sidebar.selectbox('Año', list(reversed(range(1950,2022))))
 
 # Web scraping of NBA player stats
 @st.cache
@@ -33,17 +33,17 @@ playerstats = load_data(selected_year)
 
 # Sidebar - Team selection
 sorted_unique_team = sorted(playerstats.Tm.unique())
-selected_team = st.sidebar.multiselect('Team', sorted_unique_team, sorted_unique_team)
+selected_team = st.sidebar.multiselect('Equipo', sorted_unique_team, sorted_unique_team)
 
 # Sidebar - Position selection
 unique_pos = ['C','PF','SF','PG','SG']
-selected_pos = st.sidebar.multiselect('Position', unique_pos, unique_pos)
+selected_pos = st.sidebar.multiselect('Posición', unique_pos, unique_pos)
 
 # Filtering data
 df_selected_team = playerstats[(playerstats.Tm.isin(selected_team)) & (playerstats.Pos.isin(selected_pos))]
 
-st.header('Display Player Stats of Selected Team(s)')
-st.write('Data Dimension: ' + str(df_selected_team.shape[0]) + ' rows and ' + str(df_selected_team.shape[1]) + ' columns.')
+st.header('Estadísticas de jugadores de equipo(s) seleccionado(s)')
+st.write('Tamaño de Datos: ' + str(df_selected_team.shape[0]) + ' rows & ' + str(df_selected_team.shape[1]) + ' columns.')
 st.dataframe(df_selected_team)
 
 # Download NBA player stats data
@@ -51,14 +51,14 @@ st.dataframe(df_selected_team)
 def file_download(df):
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
-    href = f'<a href="data:file/csv;base64,{b64}" download="playerstats.csv">Download CSV File</a>'
+    href = f'<a href="data:file/csv;base64,{b64}" download="estadisticas-nba.csv">Descargar archivo de CSV</a>'
     return href
 
 st.markdown(file_download(df_selected_team), unsafe_allow_html=True)
 
 # Heatmap
-if st.button('Intercorrelation Heatmap'):
-    st.header('Intercorrelation Matrix Heatmap')
+if st.button('Mapa de calor de Intercorrelaciones'):
+    st.header('Matriz de mapa de calor de la Intercorrelación')
     df_selected_team.to_csv('output.csv',index=False)
     df = pd.read_csv('output.csv')
 
