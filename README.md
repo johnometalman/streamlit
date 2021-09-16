@@ -5,7 +5,7 @@ This is a web application that performs simple webscraping to display NBA player
 
 You can select the  `year`, `team` and `position` as selection criteria and it will display a statistical chart with the performance of the players that meet the filters.
   
-## Features
+### Features
 
 - Responsive
 - Heatmap
@@ -14,7 +14,7 @@ You can select the  `year`, `team` and `position` as selection criteria and it w
 - CSV Export
 
   
-### Screenshots
+## Screenshots
 
 ![App Screenshot](https://i.ibb.co/jhMzkzg/1.jpg)
 -
@@ -41,8 +41,8 @@ The deployed web app is live at https://johnometalman-basketball.herokuapp.com/
 
   
 ### Installation
-Install 
-Install this project with pip
+Install Python on your computer
+Install this project using pip
 
 * Directory
 
