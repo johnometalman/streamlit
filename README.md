@@ -1,18 +1,17 @@
 
-## Descripción
+## Description
 
-Esta es una aplicación web que realiza un webscraping simple para mostrar estadíticas de los jugadores de la NBA. 
+This is a web application that performs simple webscraping to display NBA player statistics. 
 
-Puedes seleccionar el año, el equipo y la posición como criterios de seleccion y se desplegará un cuadro estadístico con el desempeño de los jugadores que cumplen los filtros.
-
+You can select the  `year`, `team` and `position` as selection criteria and it will display a statistical chart with the performance of the players that meet the filters.
   
-## Características
+## Features
 
-- Resposivo
-- Mapa de Calor
+- Responsive
+- Heatmap
 - Fullscreen mode
-- Filtros dinámicos
-- Exportación de CSV 
+- Dynamic Filters
+- CSV Export
 
   
 ### Screenshots
