@@ -41,8 +41,8 @@ The deployed web app is live at https://johnometalman-basketball.herokuapp.com/
 
   
 ### Installation
-Install Python on your computer
-Install this project using pip
+Install **Python** on your computer and use **pip** to install this project
+
 
 * Directory
 
