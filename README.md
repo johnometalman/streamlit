@@ -5,6 +5,10 @@ This is a web application that performs simple webscraping to display NBA player
 
 You can select the  `year`, `team` and `position` as selection criteria and it will display a statistical chart with the performance of the players that meet the filters.
   
+## Demo
+
+The deployed web app is live at https://johnometalman-basketball.herokuapp.com/
+
 ### Features
 
 - Responsive
@@ -34,10 +38,6 @@ You can select the  `year`, `team` and `position` as selection criteria and it w
 
 If you have any feedback, please reach out to us at info@johnometalman.com
 
-  
-## Demo
-
-The deployed web app is live at https://johnometalman-basketball.herokuapp.com/
 
   
 ### Installation
